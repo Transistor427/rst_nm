@@ -2,7 +2,7 @@
 
 The repository is designed to fix the problem of a printer not connecting to Wifi.
 
-<h2 align="center">How to worl</h2>
+<h2 align="center">How to work</h2>
 
 Download and install.
 ```
