@@ -1,0 +1,10 @@
+[Unit]
+Description=Startup Script
+Requires=KlipperScreen.service
+After=KlipperScreen.service
+
+[Service]
+ExecStart=/bin/bash /home/rock/rst_nm/rst_nm.sh
+
+[Install]
+WantedBy=multi-user.target
