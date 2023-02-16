@@ -13,7 +13,8 @@ sudo chmod 777 setup.sh
 sudo ./setup.sh
 ```
 
-Before install reboot system.
+Reboot the system after installation.
 ```
 sudo reboot
 ```
+After reboot, connect to the network.
