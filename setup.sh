@@ -2,7 +2,10 @@
 
 echo "Create service."
 sudo chmod 777 ./rst_nm.sh
-sudo cp ./rst_nm.service /lib/systemd/system/
+if [ ! -f /lib/systemd/system/rst_nm.service ];
+then 
+    sudo cp ./rst_nm.service /lib/systemd/system/
+fi
 
 echo "Enable service."
 sudo systemctl enable rst_nm.service
