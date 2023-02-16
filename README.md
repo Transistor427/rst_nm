@@ -1,2 +1,2 @@
-# rst_nm
+# Reset NetworkManager service
  Reset network-manager
