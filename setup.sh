@@ -1,17 +1,25 @@
 #!/bin/sh
-
-echo "Create service."
+echo "Service creation."
 sudo chmod 777 ./rst_nm.sh
 if [ ! -f /lib/systemd/system/rst_nm.service ];
 then 
+    echo "We create a service."
     sudo cp ./rst_nm.service /lib/systemd/system/
+else
+    echo "Service already created."
 fi
 
 echo "Enable service."
 sudo systemctl enable rst_nm.service
 
 echo "Create wpa_supplicant.conf"
-sudo cp ./wpa_supplicant.conf /etc/wpa_supplicant.conf
+if [ ! -f /etc/wpa_supplicant.conf ];
+then
+    echo "Let's create a file wpa_suppliant."
+    sudo cp ./wpa_supplicant.conf /etc/wpa_supplicant.conf
+else
+    echo "The file wpa_suppliant exists."
+fi
 
 echo "Setup interface."
 sudo chmod 777 /etc/network/interfaces
