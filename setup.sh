@@ -12,14 +12,8 @@ fi
 echo "Enable service."
 sudo systemctl enable rst_nm.service
 
-echo "Create wpa_supplicant.conf"
-if [ ! -f /etc/wpa_supplicant.conf ];
-then
-    echo "Let's create a file wpa_suppliant."
-    sudo cp ./wpa_supplicant.conf /etc/wpa_supplicant.conf
-else
-    echo "The file wpa_suppliant exists."
-fi
+echo "Let's create a file wpa_suppliant."
+sudo cp ./wpa_supplicant.conf /etc/wpa_supplicant.conf
 
 echo "Setup interface."
 sudo chmod 777 /etc/network/interfaces
