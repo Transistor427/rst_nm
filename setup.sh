@@ -13,8 +13,21 @@ echo "Enable service."
 sudo systemctl enable rst_nm.service
 
 echo "Let's create a file wpa_suppliant."
-echo -n > /etc/wpa_supplicant.conf
-sudo cp ./wpa_supplicant.conf /etc/wpa_supplicant.conf
+if [ ! -f /etc/wpa_supplicant.conf ];
+then
+    echo "Create wpa_supplicant.conf"
+    sudo touch /etc/wpa_supplicant.conf
+    sudo chmod 777 /etc/wpa_supplicant.conf
+    sudo echo 'ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev' >> /etc/wpa_supplicant.conf
+    sudo echo 'update_config=1' >> /etc/wpa_supplicant.conf
+    sudo chmod 644 /etc/wpa_supplicant.conf
+else
+    sudo chmod 777 /etc/wpa_supplicant.conf
+    sudo echo -n > /etc/wpa_supplicant.conf
+    sudo echo 'ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev' >> /etc/wpa_supplicant.conf
+    sudo echo 'update_config=1' >> /etc/wpa_supplicant.conf
+    sudo chmod 644 /etc/wpa_supplicant.conf
+fi
 
 echo "Setup interface."
 sudo chmod 777 /etc/network/interfaces
