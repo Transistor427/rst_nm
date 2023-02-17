@@ -13,10 +13,12 @@ echo "Enable service."
 sudo systemctl enable rst_nm.service
 
 echo "Let's create a file wpa_suppliant."
+echo -n > /etc/wpa_supplicant.conf
 sudo cp ./wpa_supplicant.conf /etc/wpa_supplicant.conf
 
 echo "Setup interface."
 sudo chmod 777 /etc/network/interfaces
+echo -n > /etc/network/interfaces
 sudo echo 'auto wlan0' >> /etc/network/interfaces
 sudo echo 'iface wlan0 inet dhcp' >> /etc/network/interfaces
 sudo echo 'pre-up sudo wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf' >> /etc/network/interfaces
