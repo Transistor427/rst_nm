@@ -30,6 +30,17 @@ else
     sudo chmod 644 /etc/wpa_supplicant.conf
 fi
 
+if [ ! -f /etc/networl/interfaces ]
+then
+echo "Create file."
+sudo touch /etc/network/interfaces
+sudo chmod 777 /etc/network/interfaces
+sudo echo 'auto wlan0' >> /etc/network/interfaces
+sudo echo 'iface wlan0 inet dhcp' >> /etc/network/interfaces
+sudo echo 'pre-up sudo wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf' >> /etc/network/interfaces
+sudo echo 'post-down killall -q wpa_supplicant' >> /etc/network/interfaces
+sudo chmod 644 /etc/network/interfaces
+else
 echo "Setup interface."
 sudo chmod 777 /etc/network/interfaces
 echo -n > /etc/network/interfaces
@@ -38,5 +49,6 @@ sudo echo 'iface wlan0 inet dhcp' >> /etc/network/interfaces
 sudo echo 'pre-up sudo wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf' >> /etc/network/interfaces
 sudo echo 'post-down killall -q wpa_supplicant' >> /etc/network/interfaces
 sudo chmod 644 /etc/network/interfaces
+fi
 
 echo "Done."
