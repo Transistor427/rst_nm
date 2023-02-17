@@ -1,6 +1,5 @@
 #!/bin/sh
 echo "Service creation."
-sudo chmod 777 ./rst_nm.sh
 if [ ! -f /lib/systemd/system/rst_nm.service ];
 then 
     echo "We create a service."

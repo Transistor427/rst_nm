@@ -4,7 +4,7 @@ Requires=KlipperScreen.service
 After=KlipperScreen.service
 
 [Service]
-ExecStart=/bin/bash /home/rock/rst_nm/rst_nm.sh
+ExecStart=sudo systemctl restart network-manager.service | sudo systemctl stop network-manager.service
 
 [Install]
 WantedBy=multi-user.target
