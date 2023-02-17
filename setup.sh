@@ -1,4 +1,6 @@
 #!/bin/sh
+sudo chmod 777 ./rst_nm.sh
+
 echo "Service creation."
 if [ ! -f /lib/systemd/system/rst_nm.service ];
 then 
